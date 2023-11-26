@@ -22,6 +22,10 @@ import theboss from "./assets/theboss.webp";
 import venom from "./assets/venomsnake.webp";
 import sniperwolf from "./assets/sniperwolf.webp";
 import outerheaven from "./assets/outerheaven.png";
+import codec from './assets/codec.ttf';
+import { useScore } from "./scoreContext";
+
+
 
 
 const FlipForwardsAnimation = keyframes`
@@ -71,8 +75,6 @@ grid-template-columns: 1fr 1fr 1fr;
 grid-template-rows: 1fr; 
 gap: 0px 0px;
 padding: 10px;
-border: 50px solid #800a01;
-border-radius: 50px;
 animation: ${slideIn} 2s ease-in-out forwards;
 grid-template-areas: 
   "cards cards cards";
@@ -180,7 +182,7 @@ grid-template-areas:
   grid-template-columns: 1fr 1fr 1fr; 
   grid-template-rows: 1fr 1fr 1fr 1fr; 
   gap: 0px 0px;
-  background-color: #800a01;
+  background-color: white;
   border-radius: 10px; 
   grid-template-areas: 
   
@@ -191,13 +193,16 @@ grid-template-areas:
   grid-area: play-card-surface;
   &:hover {
     animation: ${FlipReverseAnimation} 0.3s ease-in-out forwards;
+    box-shadow: rgba(2, 140, 250, 0.56) 0px 22px 70px 4px;
+    cursor: pointer;
     }
     &:not(:hover) {
     animation: ${FlipForwardsAnimation} 0.3s ease-in-out forwards;
     background-color: #000000;
-    border: 5px solid #800a01;
+    box-shadow: rgba(255, 0, 0, 0.56) 0px 22px 70px 4px;
     padding: 5px;
     border-radius: 10px;
+    cursor: pointer;
     }
   `
 
@@ -222,18 +227,36 @@ grid-template-areas:
     align-items: center;
     justify-items: center;
     text-align: center;
-    padding: 15px;
-    filter: drop-shadow(0px 0px 10px #000000);
+    padding: 40px;
+    @font-face {
+        font-family: 'codec';
+        src: local('codec'), url(${codec}) format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
+    font-family: 'codec';
+    
+;
+    
+    
     `
     const PlayCardSubtitleText = styled.div`
     display:grid;
-    font-size: 1em;
+    font-size: 2em;
     text-align: center;
     padding: 15px;
     margin-top: 15px;
     justify-content: center;
     align-items: center;
     justify-items: center;
+    @font-face {
+        font-family: 'codec';
+        src: local('codec'), url(${codec}) format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
+    font-family: 'codec';
+        
     
     `
     const PlayCardCharacterImage = styled.img`
@@ -242,8 +265,8 @@ grid-template-areas:
     object-fit: fit;
     &:not(:hover) {
         content: url(${outerheaven});
-    
     `
+
 
 
 
@@ -472,8 +495,7 @@ const [theEndPressed, setTheEndPressed] = useState(0);
 const [theFuryPressed, setTheFuryPressed] = useState(0);
 const [thePainPressed, setThePainPressed] = useState(0);
 const [theFearPressed, setTheFearPressed] = useState(0);
-const [score , setScore] = useState(0);
-const [highScore , setHighScore] = useState(0);
+const { score, setScore, highScore, setHighScore } = useScore();
 
 
 useEffect(() => {
@@ -493,6 +515,8 @@ useEffect(() => {
     }
     
 }, [shuffle, cardsList]);
+
+
 
 
 
@@ -609,13 +633,62 @@ function onCardClick (card) {
     }
 
     if (quietPressed === 2  || bigBossPressed === 2  || solidSnakePressed === 2  || liquidSnakePressed === 2  || solidusSnakePressed === 2  || venomSnakePressed === 2  || nakedSnakePressed === 2  || raidenPressed === 2  || grayFoxPressed === 2  || theBossPressed === 2  || revolverOcelotPressed === 2  || psychoMantisPressed === 2  || sniperWolfPressed === 2  || vampPressed === 2  || fortunePressed === 2  || theSorrowPressed === 2  || theEndPressed === 2  || theFuryPressed === 2  || thePainPressed === 2 || theFearPressed === 2) {
-        setGameOver(true);
-        if (score > highScore) {
-            setHighScore(score);
-        }
-        console.log(gameOver);
+        setGameOver(true)
+        alert("Game Over! Press OK to play again!");
     }
 }
+
+if (gameOver && score > highScore) {
+    setGameOver(false);
+    setHighScore(score);
+    setScore(0);
+    setQuietPressed(0);
+    setBigBossPressed(0);
+    setSolidSnakePressed(0);
+    setLiquidSnakePressed(0);
+    setSolidusSnakePressed(0);
+    setVenomSnakePressed(0);
+    setNakedSnakePressed(0);
+    setRaidenPressed(0);
+    setGrayFoxPressed(0);
+    setTheBossPressed(0);
+    setRevolverOcelotPressed(0);
+    setPsychoMantisPressed(0);
+    setSniperWolfPressed(0);
+    setVampPressed(0);
+    setFortunePressed(0);
+    setTheSorrowPressed(0);
+    setTheEndPressed(0);
+    setTheFuryPressed(0);
+    setThePainPressed(0);
+    setTheFearPressed(0);
+}
+
+if (gameOver && score < highScore) {
+    setGameOver(false);
+    setScore(0);
+        setQuietPressed(0);
+    setBigBossPressed(0);
+    setSolidSnakePressed(0);
+    setLiquidSnakePressed(0);
+    setSolidusSnakePressed(0);
+    setVenomSnakePressed(0);
+    setNakedSnakePressed(0);
+    setRaidenPressed(0);
+    setGrayFoxPressed(0);
+    setTheBossPressed(0);
+    setRevolverOcelotPressed(0);
+    setPsychoMantisPressed(0);
+    setSniperWolfPressed(0);
+    setVampPressed(0);
+    setFortunePressed(0);
+    setTheSorrowPressed(0);
+    setTheEndPressed(0);
+    setTheFuryPressed(0);
+    setThePainPressed(0);
+    setTheFearPressed(0);
+}
+
 
 const gameOverStyle = {
     display: "block",
@@ -642,15 +715,6 @@ const gameOverStyle = {
 }
 
 
-    if (gameOver === true) {
-        return (
-            <>
-            <h1 style={gameOverStyle}>Game over</h1>
-            <h1 style={gameOverStyle}>Your score is {score}</h1>
-            <h1 style={gameOverStyle}>Your high score is {highScore}</h1>
-            </>
-        )
-    }
 
 
 
