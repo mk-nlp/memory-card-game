@@ -521,7 +521,7 @@ useEffect(() => {
 
 
 function onCardClick (card) {
-    if (card.title === "Quiet") {
+    if (card.title === "The Quiet") {
         setQuietPressed(quietPressed + 1);
         setScore(score + 1);
         console.log(card.title + quietPressed);
@@ -556,7 +556,7 @@ function onCardClick (card) {
         setScore(score + 1);
         console.log(card.title + nakedSnakePressed);
     }
-    if (card.title === "Raiden") {
+    if (card.title === "The Raiden") {
         setRaidenPressed(raidenPressed + 1);
         setScore(score + 1);
         console.log(card.title + raidenPressed);
@@ -586,12 +586,12 @@ function onCardClick (card) {
         setScore(score + 1);
         console.log( card.title + sniperWolfPressed);
     }
-    if (card.title === "Vamp") {
+    if (card.title === "The Vamp") {
         setVampPressed(vampPressed + 1);
         setScore(score + 1);
         console.log( card.title + vampPressed);
     }
-    if (card.title === "Fortune") {
+    if (card.title === "The Fortune") {
         setFortunePressed(fortunePressed + 1);
         setScore(score + 1);
         console.log( card.title + fortunePressed);
@@ -634,7 +634,7 @@ function onCardClick (card) {
 
     if (quietPressed === 2  || bigBossPressed === 2  || solidSnakePressed === 2  || liquidSnakePressed === 2  || solidusSnakePressed === 2  || venomSnakePressed === 2  || nakedSnakePressed === 2  || raidenPressed === 2  || grayFoxPressed === 2  || theBossPressed === 2  || revolverOcelotPressed === 2  || psychoMantisPressed === 2  || sniperWolfPressed === 2  || vampPressed === 2  || fortunePressed === 2  || theSorrowPressed === 2  || theEndPressed === 2  || theFuryPressed === 2  || thePainPressed === 2 || theFearPressed === 2) {
         setGameOver(true)
-        alert("Game Over! Press OK to play again!");
+        alert("Game Over! Press OK to play again!" + " " + "Your score was: " + score + " " + "You pressed the same card twice!" );
     }
 }
 
