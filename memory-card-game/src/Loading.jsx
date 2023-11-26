@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { keyframes } from 'styled-components';
 import codec from './assets/codec.ttf';
 import codecSound from './assets/codecSound.mp3';
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import enterSound from './assets/enterSound.mp3';
 import audioIcon from './assets/speaker.svg';
 import { useEffect } from 'react';
@@ -174,6 +174,7 @@ const PushEnter = styled.div`
     background-color: #800a01;
     padding: 10px;
     border-radius: 10px;
+    user-select: none;
     `;
 
     const LoadingText2 = styled.div`
@@ -194,6 +195,7 @@ const PushEnter = styled.div`
     background-color: #800a01;
     padding: 10px;
     border-radius: 10px;
+    user-select: none;
     `;
 
     const Loading = styled.div`
@@ -204,6 +206,7 @@ const PushEnter = styled.div`
     border-top: 5px solid #000;
     animation: ${spin} 0.5s linear infinite;
     margin: 20px;
+    user-select: none;
     `;
 
     const LoadingWrapper = styled.div`
@@ -234,11 +237,7 @@ const PushEnter = styled.div`
     padding: 20px;
     border-radius: 50px;
     animation: ${props => props.animation ? slideOut : slideIn} 2s cubic-bezier(0.5, 1, 0.89, 1);
-    &:hover {
-        background-color: #800a01;
-        color: white;
     }
-    cursor: pointer;
     `;
 
 const AudioIcon = styled.img`
@@ -259,6 +258,20 @@ const audioIconStyle = {
     borderRadius: '50%',
     };
 
+const buttonStyle = {
+    display: 'flex',
+    fontFamily: 'codec',
+    fontSize: '4rem',
+    color: 'white',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: '20px',
+    borderRadius: '50px',
+    backgroundColor: '#800a01',
+    border: '2px solid #800a01',
+    cursor: 'pointer',
+    
+};
 
 
     const LoadingComponent = () => {
@@ -346,7 +359,9 @@ const audioIconStyle = {
                 <LoadingContainer>
                     <EnableAudio onClick={handleAudioClick} animation={slideOutAnimation}>
                         <AudioIcon src={audioIcon} style={audioIconStyle} animation={slideOutAnimation}/>
-                        Enable Audio TO START
+                        
+                        <p>This game is best played with audio</p>
+                        <button style={buttonStyle}>CLICK HERE TO START</button>
                     </EnableAudio>
                 </LoadingContainer>
             );

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import LoadingComponent from './Loading'
+import CardsComponent from './Cards'
 
 function App() {
   const [loading, setLoading] = useState(true)
@@ -7,12 +8,16 @@ function App() {
   setTimeout(() => {
     setLoading(false)
   }
-  , 10000)
+  , 30000)
 
-  if (!loading) {
+  if (!loading || loading) {
     return (
       <>
-      <h1>App</h1>
+      <div className='container'>
+        <div className='cards-container'>
+          <CardsComponent />
+        </div>
+      </div>
       </>
     )
   }

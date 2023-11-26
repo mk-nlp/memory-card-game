@@ -1,0 +1,26 @@
+[
+   {
+      "cardOne": {
+        "image": "path/to/image1.jpg",
+        "imageAlt": "Image 1 Alt Text",
+        "title": "Title 1",
+        "subtitle": "Subtitle 1"
+      }
+    },
+    {
+      "cardTwo": {
+        "image": "path/to/image2.jpg",
+        "imageAlt": "Image 2 Alt Text",
+        "title": "Title 2",
+        "subtitle": "Subtitle 2"
+      }
+    },
+    {
+      "cardThree": {
+        "image": "path/to/image3.jpg",
+        "imageAlt": "Image 3 Alt Text",
+        "title": "Title 3",
+        "subtitle": "Subtitle 3"
+      }
+    }
+ ]
